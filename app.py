@@ -9,6 +9,10 @@ app = Flask(__name__)
 def about():
     return render_template('about.html')
 
+@app.route('/precautions')
+def precautions():
+    return render_template('precautions.html')
+
 @app.route('/country', methods=["GET","POST"])
 def country(): 
     try:
