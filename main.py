@@ -18,12 +18,12 @@ def country():
     try:
             country = request.form['country']
             ctry = country.capitalize()
-            r = requests.get('https://covid19.mathdro.id/api/countries/%s' % country)
+            r = requests.get('https://covid19.mathdro.id/api/countries/%s/recovered' % country)
             resp1=json.loads(r.text)
             w = requests.get('https://covid19.mathdro.id/api')
             resp=json.loads(w.text)
             return render_template('main.html', confirmed=resp['confirmed']['value'],deaths=resp['deaths']['value'],recovered=resp['recovered']['value'],
-                                    conf=resp1['confirmed']['value'],deat=resp1['deaths']['value'],reco=resp1['recovered']['value'],country=ctry
+                                    conf=resp1[0]['confirmed'],deat=resp1[0]['deaths'],reco=resp1[0]['recovered'],country=ctry
                                 )
     except:
         return render_template('error.html')
@@ -33,12 +33,12 @@ def index():
     try:
         country = 'india'
         ctry = country.capitalize()
-        r = requests.get('https://covid19.mathdro.id/api/countries/%s' % country)
+        r = requests.get('https://covid19.mathdro.id/api/countries/%s/recovered' % country)
         resp1=json.loads(r.text)
         w = requests.get('https://covid19.mathdro.id/api')
         resp=json.loads(w.text)
         return render_template('main.html', confirmed=resp['confirmed']['value'],deaths=resp['deaths']['value'],recovered=resp['recovered']['value'],
-                                conf=resp1['confirmed']['value'],deat=resp1['deaths']['value'],reco=resp1['recovered']['value'],country='ctry'
+                                conf=resp1[0]['confirmed'],deat=resp1[0]['deaths'],reco=resp1[0]['recovered'],country=ctry
                             )
     except:
         return render_template('error.html')
