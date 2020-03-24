@@ -38,7 +38,7 @@ def index():
         w = requests.get('https://covid19.mathdro.id/api')
         resp=json.loads(w.text)
         return render_template('main.html', confirmed=resp['confirmed']['value'],deaths=resp['deaths']['value'],recovered=resp['recovered']['value'],
-                                conf=resp1['confirmed']['value'],deat=resp1['deaths']['value'],reco=resp1['recovered']['value'],country='ctry'
+                                conf=resp1['confirmed']['value'],deat=resp1['deaths']['value'],reco=resp1['recovered']['value'],country=ctry
                             )
     except:
         return render_template('error.html')
