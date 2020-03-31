@@ -4,6 +4,13 @@ import json
 
 app = Flask(__name__)
 
+@app.route('/blood')
+def blood():
+    return render_template('bloodDonation.html')
+
+@app.route('/donate')
+def donate():
+    return render_template('donate.html')
 
 @app.route('/about')
 def about():
@@ -46,5 +53,5 @@ def index():
 
 
 if __name__ == '__main__':
-  app.run(debug=False)
+  app.run(debug=True)
  
